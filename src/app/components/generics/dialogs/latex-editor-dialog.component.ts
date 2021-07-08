@@ -17,6 +17,7 @@ import { LatexRendererServiceConstants } from '../../../util/latex-renderer-serv
 export class LatexEditorDialogComponent implements OnInit {
   inputText = '';
   latexPackages = '';
+  varwidth = 1;
   defaultLatexPackages = [];
   urlToRenderedBlob: SafeUrl;
 
@@ -38,6 +39,7 @@ export class LatexEditorDialogComponent implements OnInit {
       );
       this.inputText = inputData.latexContent;
       this.latexPackages = inputData.latexPackages;
+      this.varwidth = inputData.varwidth;
     }
   }
 
@@ -57,7 +59,8 @@ export class LatexEditorDialogComponent implements OnInit {
     this.utilService
       .renderLatexContentAndReturnUrlToPdfBlob(
         this.inputText,
-        this.latexPackages
+        this.latexPackages,
+        this.varwidth
       )
       .subscribe((url) => {
         this.urlToRenderedBlob = this.sanitizer.bypassSecurityTrustUrl(url);

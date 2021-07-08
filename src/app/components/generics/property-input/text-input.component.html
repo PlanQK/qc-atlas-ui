@@ -71,10 +71,11 @@
     </button>
   </mat-form-field>
 </div>
-<div>
-  <img
+<div style="overflow: auto; max-height: 300px">
+    <img
     *ngIf="urlToRenderedBlob"
     [src]="urlToRenderedBlob"
-    style="display: block;"
+    style=
+      "display: block"
   />
 </div>
